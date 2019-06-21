@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccessWeb.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,17 @@ namespace DataAccessWeb.Controllers
 {
     public class DataController : Controller
     {
-        public IActionResult Index()
+        private readonly StudentServices student_services;
+
+        public DataController(StudentServices services)
         {
-            return Content("OK");
+            this.student_services = services;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var scores = await this.student_services.GetAllScoresAsync();
+            return Json(scores);
         }
     }
 }
