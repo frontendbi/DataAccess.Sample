@@ -5,6 +5,8 @@ orgname nvarchar(50),
 orgid nvarchar(50)
 )
 
+select * from scores
+
 
 INSERT INTO scores VALUES (1,'小旋风','水浒传','a');
 INSERT INTO scores VALUES (2,'鲁智深 ','水浒传','b');
